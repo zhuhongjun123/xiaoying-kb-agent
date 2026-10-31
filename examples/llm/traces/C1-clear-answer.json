@@ -1,0 +1,159 @@
+{
+  "case_id": "C1",
+  "title": "明确答案：命中单文档、无冲突",
+  "provider": "llm:deepseek-ai/DeepSeek-V3",
+  "question": "设备借用一次最长可以借多久？",
+  "history": [],
+  "budget": {
+    "max_steps": 8,
+    "max_tool_calls": 6,
+    "steps_used": 2,
+    "tool_calls_used": 1
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_docs",
+      "args": {
+        "query": "设备借用 最长 期限",
+        "top_k": 6
+      },
+      "reason": "检索与设备借用期限相关的文档片段",
+      "observation": {
+        "ok": true,
+        "summary": "检索「设备借用 最长 期限」命中 6 个片段，涉及 D03、D02、D01、D05；最高分 15.09，置信=是",
+        "error": "",
+        "data": {
+          "query": "设备借用 最长 期限",
+          "expanded_query": "设备借用 最长 期限 时限 多久 几天 日内 天数 多长时间 拖 领用 借出 租借 借",
+          "top_score": 15.09,
+          "confident": true,
+          "content_hits": 2,
+          "hits": [
+            {
+              "doc_id": "D03",
+              "title": "固定资产与设备借用规定",
+              "version": "v1.1",
+              "effective_date": "2025-07-01",
+              "heading": "2 借用期限",
+              "score": 15.09,
+              "text": "- 单次借用期限：7 个工作日\n- 续借次数上限：1 次\n- 续借延长时长：最多 5 个工作日\n- 续借申请时点：到期前 1 个工作日在资产系统提交"
+            },
+            {
+              "doc_id": "D02",
+              "title": "费用报销实施细则",
+              "version": "v2.0",
+              "effective_date": "2026-01-15",
+              "heading": "2 报销时限",
+              "score": 7.184,
+              "text": "- 差旅费用报销期限：15 天\n- 起算时点：出差行程结束之日\n- 单据要求：发票原件、行程单、审批通过的出差申请单"
+            },
+            {
+              "doc_id": "D01",
+              "title": "差旅报销管理办法",
+              "version": "v1.2",
+              "effective_date": "2025-03-01",
+              "heading": "3 报销时限与流程",
+              "score": 6.451,
+              "text": ""
+            },
+            {
+              "doc_id": "D01",
+              "title": "差旅报销管理办法",
+              "version": "v1.2",
+              "effective_date": "2025-03-01",
+              "heading": "3.1 报销期限",
+              "score": 5.575,
+              "text": "- 差旅费用报销期限：30 天\n- 起算时点：出差行程结束之日\n- 提交方式：OA 系统「费用报销」单据，附行程单与发票"
+            },
+            {
+              "doc_id": "D05",
+              "title": "考勤与请假管理制度",
+              "version": "v1.3",
+              "effective_date": "2025-09-01",
+              "heading": "3 病假",
+              "score": 5.459,
+              "text": "- 病假证明材料提交时限：返岗后 3 个工作日内\n- 连续病假超过 5 个工作日的：需提供二级及以上医院证明"
+            },
+            {
+              "doc_id": "D05",
+              "title": "考勤与请假管理制度",
+              "version": "v1.3",
+              "effective_date": "2025-09-01",
+              "heading": "2 年假",
+              "score": 4.776,
+              "text": "- 累计工作满 1 年不满 10 年的年假天数：5 天\n- 累计工作满 10 年不满 20 年的年假天数：10 天\n- 累计工作满 20 年及以上的年假天数：15 天\n- 年假申请提前量：原则上提前 3 个工作日"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "step": 2,
+      "action": "finish",
+      "args": {
+        "status": "answered",
+        "answer": "设备借用一次最长可以借7个工作日，且可以续借1次，续借最多延长5个工作日。续借申请需在到期前1个工作日在资产系统提交。",
+        "citations": [
+          {
+            "doc_id": "D03",
+            "quote": "单次借用期限：7 个工作日"
+          },
+          {
+            "doc_id": "D03",
+            "quote": "续借次数上限：1 次"
+          },
+          {
+            "doc_id": "D03",
+            "quote": "续借延长时长：最多 5 个工作日"
+          },
+          {
+            "doc_id": "D03",
+            "quote": "续借申请时点：到期前 1 个工作日在资产系统提交"
+          }
+        ],
+        "gaps": [],
+        "next_actions": [],
+        "basis": "依据D03文档中关于设备借用期限的规定。"
+      },
+      "reason": "根据检索结果，D03文档明确规定了设备借用的期限和续借规则，且该文档版本v1.1于2025-07-01生效，在当前日期2026-10-28仍然有效。",
+      "observation": {
+        "ok": true,
+        "summary": "终止动作：不调用工具"
+      }
+    }
+  ],
+  "result": {
+    "status": "answered",
+    "answer": "设备借用一次最长可以借7个工作日，且可以续借1次，续借最多延长5个工作日。续借申请需在到期前1个工作日在资产系统提交。",
+    "citations": [
+      {
+        "doc_id": "D03",
+        "version": "v1.1",
+        "quote": "单次借用期限：7 个工作日"
+      },
+      {
+        "doc_id": "D03",
+        "version": "v1.1",
+        "quote": "续借次数上限：1 次"
+      },
+      {
+        "doc_id": "D03",
+        "version": "v1.1",
+        "quote": "续借延长时长：最多 5 个工作日"
+      },
+      {
+        "doc_id": "D03",
+        "version": "v1.1",
+        "quote": "续借申请时点：到期前 1 个工作日在资产系统提交"
+      }
+    ],
+    "gaps": [],
+    "next_actions": [],
+    "basis": "依据D03文档中关于设备借用期限的规定。"
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}

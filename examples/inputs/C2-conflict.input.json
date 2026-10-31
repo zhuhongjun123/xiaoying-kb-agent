@@ -1,0 +1,8 @@
+{
+  "case_id": "C2",
+  "title": "文档冲突：D01 30 天 vs D02 15 天，无适用范围与优先级",
+  "question": "报销期限是多久？",
+  "history": [],
+  "tool_faults": {},
+  "budget": {}
+}

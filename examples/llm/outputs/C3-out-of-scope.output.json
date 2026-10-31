@@ -1,0 +1,26 @@
+{
+  "case_id": "C3",
+  "title": "资料外问题：库内无相关制度",
+  "question": "公司年会的抽奖规则是什么？中奖率多少？",
+  "status": "out_of_scope",
+  "answer": "未找到与公司年会抽奖规则及中奖率相关的文档",
+  "citations": [],
+  "gaps": [
+    "年会抽奖规则",
+    "中奖率"
+  ],
+  "next_actions": [
+    "请相关部门提供最新年会抽奖规则文档"
+  ],
+  "basis": "经过多轮检索均未找到相关文档",
+  "budget": {
+    "max_steps": 8,
+    "max_tool_calls": 6,
+    "steps_used": 4,
+    "tool_calls_used": 3
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}

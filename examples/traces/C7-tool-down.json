@@ -1,0 +1,82 @@
+{
+  "case_id": "C7",
+  "title": "工具失败（不可恢复）：检索工具全程不可用",
+  "provider": "mock-rule-policy",
+  "question": "设备借用一次最长可以借多久？",
+  "history": [],
+  "budget": {
+    "max_steps": 8,
+    "max_tool_calls": 6,
+    "steps_used": 3,
+    "tool_calls_used": 2
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_docs",
+      "args": {
+        "query": "设备借用一次最长可以借多久？",
+        "top_k": 6
+      },
+      "reason": "先检索资料库，确认是否存在可支撑回答的原文",
+      "observation": {
+        "ok": false,
+        "summary": "检索服务超时：上游 3000ms 未返回",
+        "error": "TIMEOUT",
+        "data": {
+          "tool": "search_docs",
+          "attempt": 1,
+          "injected_fault": true
+        }
+      }
+    },
+    {
+      "step": 2,
+      "action": "search_docs",
+      "args": {
+        "query": "设备借用一次最长借期限",
+        "top_k": 8
+      },
+      "reason": "上次检索因超时失败，改写查询后重试一次（不重发同一请求）",
+      "observation": {
+        "ok": false,
+        "summary": "检索服务超时：上游 3000ms 未返回",
+        "error": "TIMEOUT",
+        "data": {
+          "tool": "search_docs",
+          "attempt": 2,
+          "injected_fault": true
+        }
+      }
+    },
+    {
+      "step": 3,
+      "action": "finish",
+      "args": {
+        "status": "insufficient",
+        "reason": "检索连续失败，无可用证据"
+      },
+      "reason": "检索连续两次失败，没有证据就不作答，明确说明工具不可用",
+      "observation": {
+        "ok": true,
+        "summary": "终止动作：不调用工具"
+      }
+    }
+  ],
+  "result": {
+    "status": "insufficient",
+    "answer": "无法给出可靠答案：检索连续失败，无可用证据。",
+    "citations": [],
+    "gaps": [
+      "检索连续失败，无可用证据"
+    ],
+    "next_actions": [
+      "补充问题关键词或指定文档 ID 后重试"
+    ],
+    "basis": ""
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}

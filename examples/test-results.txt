@@ -1,0 +1,78 @@
+# 实际执行记录（离线 mock 通道，可逐字复现）
+# 环境：Windows 11 / Python 3.13.14 / 无第三方依赖 / 不联网
+
+$ python -m unittest discover -s tests -v
+test_all_citations_verifiable (test_agent.TestAcceptanceCases.test_all_citations_verifiable) ... ok
+test_budget_exhaustion_returns_unfinished (test_agent.TestAcceptanceCases.test_budget_exhaustion_returns_unfinished) ... ok
+test_conflict_case_never_picks_one_side (test_agent.TestAcceptanceCases.test_conflict_case_never_picks_one_side)
+C2 的答案必须同时出现两个数值，且状态是 conflict。 ... ok
+test_every_case_matches_expectation (test_agent.TestAcceptanceCases.test_every_case_matches_expectation) ... ok
+test_paraphrase_conclusion_matches_original (test_agent.TestAcceptanceCases.test_paraphrase_conclusion_matches_original)
+C4 换了问法，结论类型必须与 C2 一致。 ... ok
+test_tool_failure_path_has_retry_then_gives_up (test_agent.TestAcceptanceCases.test_tool_failure_path_has_retry_then_gives_up) ... ok
+test_trace_shape_is_complete (test_agent.TestAcceptanceCases.test_trace_shape_is_complete)
+每条 trace 都必须有步骤、工具参数、返回摘要、决策依据。 ... ok
+test_tool_call_limit (test_agent.TestBudget.test_tool_call_limit) ... ok
+test_answer_follows_modified_value (test_agent.TestDataDriven.test_answer_follows_modified_value) ... ok
+test_conflict_disappears_when_values_become_equal (test_agent.TestDataDriven.test_conflict_disappears_when_values_become_equal)
+把 D02 改成 30 天，两文一致后状态应从 conflict 变成 answered。 ... ok
+test_future_effective_date_breaks_resolution (test_agent.TestDataDriven.test_future_effective_date_breaks_resolution)
+把 D08 的生效日期推到未来，取代关系不能生效，必须退回冲突。 ... ok
+test_new_topic_document_is_retrievable (test_agent.TestDataDriven.test_new_topic_document_is_retrievable)
+新增一个此前不存在的主题文档，不改代码即可被检索并作答。 ... ok
+test_no_supersede_no_priority_becomes_conflict (test_agent.TestDataDriven.test_no_supersede_no_priority_becomes_conflict)
+取代声明与优先级都去掉，就只剩冲突，必须追问。 ... ok
+test_partial_resolution_still_reports_conflict (test_agent.TestDataDriven.test_partial_resolution_still_reports_conflict)
+新增一份只取代 D01 的文档：D01 退出，D02 仍在，结论必须是部分消解后的冲突。 ... ok
+test_supersede_removed_falls_back_to_priority (test_agent.TestDataDriven.test_supersede_removed_falls_back_to_priority)
+删掉 D08 的取代声明后，消解应降级到第二级规则：显式优先级。 ... ok
+test_answered_without_citation_is_caught (test_guards.TestCitationCheck.test_answered_without_citation_is_caught) ... ok
+test_clause_reference_numbers_are_exempt (test_guards.TestCitationCheck.test_clause_reference_numbers_are_exempt)
+「第 3.1 条」「v1.2」「2026-06-01」这类指称不算断言数字。 ... ok
+test_fabricated_quote_is_caught (test_guards.TestCitationCheck.test_fabricated_quote_is_caught) ... ok
+test_good_quote_passes (test_guards.TestCitationCheck.test_good_quote_passes) ... ok
+test_number_without_support_is_caught (test_guards.TestCitationCheck.test_number_without_support_is_caught) ... ok
+test_conflict_still_unresolvable_after_reading_both (test_guards.TestConflictDetection.test_conflict_still_unresolvable_after_reading_both) ... ok
+test_irrelevant_docs_excluded_from_evidence (test_guards.TestConflictDetection.test_irrelevant_docs_excluded_from_evidence)
+借用问题不应把调休文档拉进冲突比对。 ... ok
+test_no_conflict_across_topics (test_guards.TestConflictDetection.test_no_conflict_across_topics)
+「起算时点」在报销与调休里都有，但主题不同，不得算冲突。 ... ok
+test_resolvable_by_supersede (test_guards.TestConflictDetection.test_resolvable_by_supersede)
+D08 显式声明取代 D07，读完全文后应可消解。 ... ok
+test_unresolvable_conflict (test_guards.TestConflictDetection.test_unresolvable_conflict)
+D01 30 天 vs D02 15 天：只看到片段时不可消解。 ... ok
+test_after_effective_date_resolves (test_guards.TestEffectiveDate.test_after_effective_date_resolves) ... ok
+test_before_effective_date_does_not_resolve (test_guards.TestEffectiveDate.test_before_effective_date_does_not_resolve) ... ok
+test_key_to_values (test_retrieval.TestExpand.test_key_to_values) ... ok
+test_value_to_key (test_retrieval.TestExpand.test_value_to_key) ... ok
+test_clear_question_hits_expected_doc (test_retrieval.TestRetrieval.test_clear_question_hits_expected_doc) ... ok
+test_generic_word_alone_is_not_enough (test_retrieval.TestRetrieval.test_generic_word_alone_is_not_enough)
+只命中「公司」这类泛词不算有内容，必须挡住。 ... ok
+test_heading_boost_prefers_specific_section (test_retrieval.TestRetrieval.test_heading_boost_prefers_specific_section)
+「住宿」问题下，标题就叫「住宿上限」的小节要压过泛泛的「目的与适用范围」。 ... ok
+test_out_of_scope_is_not_confident (test_retrieval.TestRetrieval.test_out_of_scope_is_not_confident) ... ok
+test_paraphrase_same_docs_as_formal_wording (test_retrieval.TestRetrieval.test_paraphrase_same_docs_as_formal_wording) ... ok
+test_scores_are_descending (test_retrieval.TestRetrieval.test_scores_are_descending) ... ok
+test_chinese_bigram_and_ascii (test_retrieval.TestTokenize.test_chinese_bigram_and_ascii) ... ok
+test_single_char_run_kept (test_retrieval.TestTokenize.test_single_char_run_kept) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 0.346s
+
+OK
+
+$ python run.py run-cases --strict
+用例   场景                                   状态                  步/工具     断言
+C1   明确答案：命中单文档、无冲突                       answered            2/1      PASS
+C2   文档冲突：D01 30 天 vs D02 15 天，无适用范围与优先级  conflict            4/3      PASS
+C3   资料外问题：库内无相关制度                        out_of_scope        3/2      PASS
+C4   改写后的相似问题：口语化问法应得到与 C2 一致的结论          conflict            4/3      PASS
+C5   上下文追问：指代缺失，需从上文恢复主题与文档               answered            2/1      PASS
+C6   工具失败（可恢复）：检索超时后改写查询重试                answered            3/2      PASS
+C7   工具失败（不可恢复）：检索工具全程不可用                 insufficient        3/2      PASS
+C8   冲突可消解：D08 声明取代 D07，应给出结论并说明依据        answered            4/3      PASS
+C9   预算耗尽：步数上限触发的明确未完成状态                  unfinished          1/1      PASS
+C10  明确答案（产品侧）：FAQ 类问题                    answered            2/1      PASS
+C11  检索改进：标题加权把精准小节排到泛段落之前                answered            2/1      PASS
+
+共 11 个用例，失败 0 个。inputs/outputs/traces/transcripts 已写入 examples

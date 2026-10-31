@@ -1,0 +1,166 @@
+{
+  "case_id": "C7",
+  "title": "工具失败（不可恢复）：检索工具全程不可用",
+  "provider": "llm:deepseek-ai/DeepSeek-V3",
+  "question": "设备借用一次最长可以借多久？",
+  "history": [],
+  "budget": {
+    "max_steps": 8,
+    "max_tool_calls": 6,
+    "steps_used": 7,
+    "tool_calls_used": 6
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_docs",
+      "args": {
+        "query": "设备借用 最长 期限",
+        "top_k": 6
+      },
+      "reason": "检索与设备借用期限相关的文档片段",
+      "observation": {
+        "ok": false,
+        "summary": "检索服务超时：上游 3000ms 未返回",
+        "error": "TIMEOUT",
+        "data": {
+          "tool": "search_docs",
+          "attempt": 1,
+          "injected_fault": true
+        }
+      }
+    },
+    {
+      "step": 2,
+      "action": "search_docs",
+      "args": {
+        "query": "设备借用 最长 期限",
+        "top_k": 6
+      },
+      "reason": "检索与设备借用期限相关的文档片段",
+      "observation": {
+        "ok": false,
+        "summary": "检索服务超时：上游 3000ms 未返回",
+        "error": "TIMEOUT",
+        "data": {
+          "tool": "search_docs",
+          "attempt": 2,
+          "injected_fault": true
+        }
+      }
+    },
+    {
+      "step": 3,
+      "action": "search_docs",
+      "args": {
+        "query": "设备借用 最长 期限",
+        "top_k": 6
+      },
+      "reason": "检索与设备借用期限相关的文档片段",
+      "observation": {
+        "ok": false,
+        "summary": "检索服务超时：上游 3000ms 未返回",
+        "error": "TIMEOUT",
+        "data": {
+          "tool": "search_docs",
+          "attempt": 3,
+          "injected_fault": true
+        }
+      }
+    },
+    {
+      "step": 4,
+      "action": "search_docs",
+      "args": {
+        "query": "设备借用 最长 期限",
+        "top_k": 6
+      },
+      "reason": "检索设备借用的最长期限相关条款",
+      "observation": {
+        "ok": false,
+        "summary": "检索服务超时：上游 3000ms 未返回",
+        "error": "TIMEOUT",
+        "data": {
+          "tool": "search_docs",
+          "attempt": 4,
+          "injected_fault": true
+        }
+      }
+    },
+    {
+      "step": 5,
+      "action": "search_docs",
+      "args": {
+        "query": "设备借用 最长 期限",
+        "top_k": 6
+      },
+      "reason": "检索设备借用的最长期限相关条款",
+      "observation": {
+        "ok": false,
+        "summary": "检索服务超时：上游 3000ms 未返回",
+        "error": "TIMEOUT",
+        "data": {
+          "tool": "search_docs",
+          "attempt": 5,
+          "injected_fault": true
+        }
+      }
+    },
+    {
+      "step": 6,
+      "action": "search_docs",
+      "args": {
+        "query": "设备借用 最长 期限",
+        "top_k": 6
+      },
+      "reason": "检索设备借用相关的最长期限规定",
+      "observation": {
+        "ok": false,
+        "summary": "检索服务超时：上游 3000ms 未返回",
+        "error": "TIMEOUT",
+        "data": {
+          "tool": "search_docs",
+          "attempt": 6,
+          "injected_fault": true
+        }
+      }
+    },
+    {
+      "step": 7,
+      "action": "finish",
+      "args": {
+        "status": "insufficient",
+        "answer": "无法获取设备借用期限信息，因为检索服务多次超时不可用。",
+        "citations": [],
+        "gaps": [
+          "检索服务不可用"
+        ],
+        "next_actions": [
+          "请稍后再试或联系技术支持"
+        ],
+        "basis": "检索服务连续六次超时，无法获取相关文档信息"
+      },
+      "reason": "检索服务多次超时不可用，无法继续查询",
+      "observation": {
+        "ok": true,
+        "summary": "终止动作：不调用工具"
+      }
+    }
+  ],
+  "result": {
+    "status": "insufficient",
+    "answer": "无法获取设备借用期限信息，因为检索服务多次超时不可用。",
+    "citations": [],
+    "gaps": [
+      "检索服务不可用"
+    ],
+    "next_actions": [
+      "请稍后再试或联系技术支持"
+    ],
+    "basis": "检索服务连续六次超时，无法获取相关文档信息"
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}

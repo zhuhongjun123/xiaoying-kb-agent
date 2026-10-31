@@ -1,0 +1,8 @@
+{
+  "case_id": "C1",
+  "title": "明确答案：命中单文档、无冲突",
+  "question": "设备借用一次最长可以借多久？",
+  "history": [],
+  "tool_faults": {},
+  "budget": {}
+}

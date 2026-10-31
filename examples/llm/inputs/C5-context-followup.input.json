@@ -1,0 +1,17 @@
+{
+  "case_id": "C5",
+  "title": "上下文追问：指代缺失，需从上文恢复主题与文档",
+  "question": "那续借呢？",
+  "history": [
+    {
+      "role": "user",
+      "content": "设备借用可以借多久？"
+    },
+    {
+      "role": "assistant",
+      "content": "单次借用期限为 7 个工作日，依据《固定资产与设备借用规定》（D03）。"
+    }
+  ],
+  "tool_faults": {},
+  "budget": {}
+}

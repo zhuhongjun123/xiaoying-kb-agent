@@ -1,0 +1,10 @@
+{
+  "case_id": "C9",
+  "title": "预算耗尽：步数上限触发的明确未完成状态",
+  "question": "采购金额 5 万元需要谁审批？",
+  "history": [],
+  "tool_faults": {},
+  "budget": {
+    "max_steps": 1
+  }
+}

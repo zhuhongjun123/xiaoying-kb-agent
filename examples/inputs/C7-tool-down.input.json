@@ -1,0 +1,12 @@
+{
+  "case_id": "C7",
+  "title": "工具失败（不可恢复）：检索工具全程不可用",
+  "question": "设备借用一次最长可以借多久？",
+  "history": [],
+  "tool_faults": {
+    "search_docs": [
+      "*"
+    ]
+  },
+  "budget": {}
+}

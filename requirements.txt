@@ -1,0 +1,10 @@
+# 本项目刻意做到「无必需第三方依赖」：Python 3.10+ 标准库即可运行。
+#
+# 已使用的标准库：argparse / json / math / re / urllib / pathlib / dataclasses /
+#                 collections / unittest / tempfile / shutil
+#
+# 真实模型通道用标准库 urllib 直接调 OpenAI 兼容接口，因此也不需要 openai / requests。
+# 检索是本地 BM25 实现（约 40 行），不依赖 rank_bm25 / jieba / faiss。
+#
+# 若要装开发期便利工具（非必需）：
+# pytest>=8.0    # 仅当你想用 pytest 跑 tests/；unittest 已经够用

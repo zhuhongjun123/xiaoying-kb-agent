@@ -1,0 +1,29 @@
+{
+  "case_id": "C6",
+  "title": "工具失败（可恢复）：检索超时后改写查询重试",
+  "question": "病假证明材料要几天内提交？",
+  "status": "answered",
+  "answer": "依据《考勤与请假管理制度》（D05，v1.3，2025-09-01 生效）：\n- 病假证明材料提交时限：返岗后 3 个工作日内\n- 连续病假超过 5 个工作日的：需提供二级及以上医院证明",
+  "citations": [
+    {
+      "doc_id": "D05",
+      "version": "v1.3",
+      "quote": "- 病假证明材料提交时限：返岗后 3 个工作日内\n- 连续病假超过 5 个工作日的：需提供二级及以上医院证明"
+    }
+  ],
+  "gaps": [
+    "本条仅适用于「全体在职员工」，若提问者不属于该范围需另行确认"
+  ],
+  "next_actions": [],
+  "basis": "",
+  "budget": {
+    "max_steps": 8,
+    "max_tool_calls": 6,
+    "steps_used": 3,
+    "tool_calls_used": 2
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}

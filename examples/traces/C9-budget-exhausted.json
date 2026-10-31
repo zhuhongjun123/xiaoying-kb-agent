@@ -1,0 +1,110 @@
+{
+  "case_id": "C9",
+  "title": "预算耗尽：步数上限触发的明确未完成状态",
+  "provider": "mock-rule-policy",
+  "question": "采购金额 5 万元需要谁审批？",
+  "history": [],
+  "budget": {
+    "max_steps": 1,
+    "max_tool_calls": 6,
+    "steps_used": 1,
+    "tool_calls_used": 1
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_docs",
+      "args": {
+        "query": "采购金额 5 万元需要谁审批？",
+        "top_k": 6
+      },
+      "reason": "先检索资料库，确认是否存在可支撑回答的原文",
+      "observation": {
+        "ok": true,
+        "summary": "检索「采购金额 5 万元需要谁审批？」命中 6 个片段，涉及 D09、D01、D05、D02；最高分 25.82，置信=是",
+        "error": "",
+        "data": {
+          "query": "采购金额 5 万元需要谁审批？",
+          "expanded_query": "采购金额 5 万元需要谁审批？ 申购 采买 批准 审核 签批",
+          "top_score": 25.822,
+          "confident": true,
+          "content_hits": 5,
+          "hits": [
+            {
+              "doc_id": "D09",
+              "title": "采购与供应商准入管理办法",
+              "version": "v1.0",
+              "effective_date": "2025-11-01",
+              "heading": "3 采购审批",
+              "score": 25.822,
+              "text": "- 单笔采购金额不超过 2 万元的：部门负责人审批\n- 单笔采购金额 2 万元至 20 万元的：部门负责人与采购部会签\n- 单笔采购金额超过 20 万元的：需提交采购委员会评审"
+            },
+            {
+              "doc_id": "D01",
+              "title": "差旅报销管理办法",
+              "version": "v1.2",
+              "effective_date": "2025-03-01",
+              "heading": "4 审批权限",
+              "score": 9.468,
+              "text": "- 单笔报销金额不超过 5000 元的：部门负责人审批\n- 单笔报销金额超过 5000 元的：部门负责人审批后报财务总监审批"
+            },
+            {
+              "doc_id": "D05",
+              "title": "考勤与请假管理制度",
+              "version": "v1.3",
+              "effective_date": "2025-09-01",
+              "heading": "5 请假审批",
+              "score": 9.322,
+              "text": "- 3 天以内的请假：直属主管审批\n- 超过 3 天的请假：直属主管审批后报人力资源部备案"
+            },
+            {
+              "doc_id": "D09",
+              "title": "采购与供应商准入管理办法",
+              "version": "v1.0",
+              "effective_date": "2025-11-01",
+              "heading": "2 供应商准入",
+              "score": 8.114,
+              "text": "- 供应商资质材料审核时限：5 个工作日\n- 现场考察要求：年度采购额预计超过 100 万元的供应商需现场考察\n- 准入评审通过后有效期：2 年，到期需重新评审"
+            },
+            {
+              "doc_id": "D02",
+              "title": "费用报销实施细则",
+              "version": "v2.0",
+              "effective_date": "2026-01-15",
+              "heading": "5 其他",
+              "score": 4.06,
+              "text": "本细则自 2026-01-15 起执行，由财务共享中心负责解释。"
+            },
+            {
+              "doc_id": "D01",
+              "title": "差旅报销管理办法",
+              "version": "v1.2",
+              "effective_date": "2025-03-01",
+              "heading": "5 附则",
+              "score": 3.829,
+              "text": "本办法由财务部负责解释。本办法未规定的事项，按公司其他相关制度执行。"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "result": {
+    "status": "unfinished",
+    "answer": "任务未完成：达到步数上限 1（已用 1 步 / 1 次工具调用，已检索到 D09、D01、D05、D02）。为避免在证据不完整时给出结论，这里不输出答案。",
+    "citations": [],
+    "gaps": [
+      "达到步数上限 1",
+      "证据链尚未闭合"
+    ],
+    "next_actions": [
+      "提高上限后重试",
+      "或缩小问题范围"
+    ],
+    "basis": ""
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}

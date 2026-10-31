@@ -1,0 +1,37 @@
+{
+  "case_id": "C5",
+  "title": "上下文追问：指代缺失，需从上文恢复主题与文档",
+  "question": "那续借呢？",
+  "status": "answered",
+  "answer": "根据《固定资产与设备借用规定》（D03），续借次数上限为1次，续借延长时长最多5个工作日，且需在到期前1个工作日内在资产系统提交续借申请。",
+  "citations": [
+    {
+      "doc_id": "D03",
+      "version": "v1.1",
+      "quote": "续借次数上限：1 次"
+    },
+    {
+      "doc_id": "D03",
+      "version": "v1.1",
+      "quote": "续借延长时长：最多 5 个工作日"
+    },
+    {
+      "doc_id": "D03",
+      "version": "v1.1",
+      "quote": "续借申请时点：到期前 1 个工作日在资产系统提交"
+    }
+  ],
+  "gaps": [],
+  "next_actions": [],
+  "basis": "依据D03文档中关于续借的具体条款。",
+  "budget": {
+    "max_steps": 8,
+    "max_tool_calls": 6,
+    "steps_used": 2,
+    "tool_calls_used": 1
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}

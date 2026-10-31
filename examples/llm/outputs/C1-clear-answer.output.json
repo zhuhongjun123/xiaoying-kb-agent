@@ -1,0 +1,42 @@
+{
+  "case_id": "C1",
+  "title": "明确答案：命中单文档、无冲突",
+  "question": "设备借用一次最长可以借多久？",
+  "status": "answered",
+  "answer": "设备借用一次最长可以借7个工作日，且可以续借1次，续借最多延长5个工作日。续借申请需在到期前1个工作日在资产系统提交。",
+  "citations": [
+    {
+      "doc_id": "D03",
+      "version": "v1.1",
+      "quote": "单次借用期限：7 个工作日"
+    },
+    {
+      "doc_id": "D03",
+      "version": "v1.1",
+      "quote": "续借次数上限：1 次"
+    },
+    {
+      "doc_id": "D03",
+      "version": "v1.1",
+      "quote": "续借延长时长：最多 5 个工作日"
+    },
+    {
+      "doc_id": "D03",
+      "version": "v1.1",
+      "quote": "续借申请时点：到期前 1 个工作日在资产系统提交"
+    }
+  ],
+  "gaps": [],
+  "next_actions": [],
+  "basis": "依据D03文档中关于设备借用期限的规定。",
+  "budget": {
+    "max_steps": 8,
+    "max_tool_calls": 6,
+    "steps_used": 2,
+    "tool_calls_used": 1
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}

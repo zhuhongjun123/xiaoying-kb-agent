@@ -1,0 +1,42 @@
+{
+  "case_id": "C11",
+  "title": "检索改进：标题加权把精准小节排到泛段落之前",
+  "question": "出差住宿一晚最多能报多少钱？",
+  "status": "answered",
+  "answer": "出差住宿一晚的报销上限根据城市级别不同而有所区别：一线城市住宿上限为600元/晚，新一线及二线城市住宿上限为450元/晚，其他城市住宿上限为350元/晚。同性别同事同行出差时，原则上应安排标准间合住。",
+  "citations": [
+    {
+      "doc_id": "D10",
+      "version": "v1.3",
+      "quote": "一线城市住宿上限：600 元/晚"
+    },
+    {
+      "doc_id": "D10",
+      "version": "v1.3",
+      "quote": "新一线及二线城市住宿上限：450 元/晚"
+    },
+    {
+      "doc_id": "D10",
+      "version": "v1.3",
+      "quote": "其他城市住宿上限：350 元/晚"
+    },
+    {
+      "doc_id": "D10",
+      "version": "v1.3",
+      "quote": "同性别同事同行出差：原则上安排标准间合住"
+    }
+  ],
+  "gaps": [],
+  "next_actions": [],
+  "basis": "D10《差旅住宿标准》v1.3 生效2026-02-01 优先级1 适用范围「全体在职员工」替代「none」",
+  "budget": {
+    "max_steps": 8,
+    "max_tool_calls": 6,
+    "steps_used": 5,
+    "tool_calls_used": 4
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}

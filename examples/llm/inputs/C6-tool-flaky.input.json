@@ -1,0 +1,12 @@
+{
+  "case_id": "C6",
+  "title": "工具失败（可恢复）：检索超时后改写查询重试",
+  "question": "病假证明材料要几天内提交？",
+  "history": [],
+  "tool_faults": {
+    "search_docs": [
+      1
+    ]
+  },
+  "budget": {}
+}

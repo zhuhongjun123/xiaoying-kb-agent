@@ -1,0 +1,27 @@
+{
+  "case_id": "C8",
+  "title": "冲突可消解：D08 声明取代 D07，应给出结论并说明依据",
+  "question": "调休必须在多久内用完？",
+  "status": "answered",
+  "answer": "调休使用期限为60天，从加班发生之日起算。",
+  "citations": [
+    {
+      "doc_id": "D08",
+      "version": "v2.0",
+      "quote": "调休使用期限：60 天\n    - 起算时点：加班发生之日"
+    }
+  ],
+  "gaps": [],
+  "next_actions": [],
+  "basis": "根据D08《加班与调休管理规定（2026 年修订）》v2.0，该文档优先级高于D07且已替代D07的相关条款，且当前日期2026-10-28在D08的生效日期2026-06-01之后。",
+  "budget": {
+    "max_steps": 8,
+    "max_tool_calls": 6,
+    "steps_used": 4,
+    "tool_calls_used": 3
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}

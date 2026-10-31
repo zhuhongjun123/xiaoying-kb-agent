@@ -1,0 +1,25 @@
+{
+  "case_id": "C7",
+  "title": "工具失败（不可恢复）：检索工具全程不可用",
+  "question": "设备借用一次最长可以借多久？",
+  "status": "insufficient",
+  "answer": "无法给出可靠答案：检索连续失败，无可用证据。",
+  "citations": [],
+  "gaps": [
+    "检索连续失败，无可用证据"
+  ],
+  "next_actions": [
+    "补充问题关键词或指定文档 ID 后重试"
+  ],
+  "basis": "",
+  "budget": {
+    "max_steps": 8,
+    "max_tool_calls": 6,
+    "steps_used": 3,
+    "tool_calls_used": 2
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}

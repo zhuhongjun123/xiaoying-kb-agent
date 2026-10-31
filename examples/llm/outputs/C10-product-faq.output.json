@@ -1,0 +1,32 @@
+{
+  "case_id": "C10",
+  "title": "明确答案（产品侧）：FAQ 类问题",
+  "question": "云剪单次导出最长可以多长？4K 要什么版本？",
+  "status": "answered",
+  "answer": "云剪单次导出最长时长为30分钟，4K导出功能仅专业版及以上版本可用。",
+  "citations": [
+    {
+      "doc_id": "D04",
+      "version": "v3.4",
+      "quote": "单次导出时长上限：30 分钟"
+    },
+    {
+      "doc_id": "D04",
+      "version": "v3.4",
+      "quote": "4K 导出：仅专业版及以上版本可用"
+    }
+  ],
+  "gaps": [],
+  "next_actions": [],
+  "basis": "依据D04文档v3.4版本（2026-05-20生效）的导出规格条款",
+  "budget": {
+    "max_steps": 8,
+    "max_tool_calls": 6,
+    "steps_used": 2,
+    "tool_calls_used": 1
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}

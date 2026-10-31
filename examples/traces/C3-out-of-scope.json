@@ -1,0 +1,198 @@
+{
+  "case_id": "C3",
+  "title": "资料外问题：库内无相关制度",
+  "provider": "mock-rule-policy",
+  "question": "公司年会的抽奖规则是什么？中奖率多少？",
+  "history": [],
+  "budget": {
+    "max_steps": 8,
+    "max_tool_calls": 6,
+    "steps_used": 3,
+    "tool_calls_used": 2
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_docs",
+      "args": {
+        "query": "公司年会的抽奖规则是什么？中奖率多少？",
+        "top_k": 6
+      },
+      "reason": "先检索资料库，确认是否存在可支撑回答的原文",
+      "observation": {
+        "ok": true,
+        "summary": "检索「公司年会的抽奖规则是什么？中奖率多少？」命中 6 个片段，涉及 D01、D05、D09、D02、D03；最高分 2.23，置信=否",
+        "error": "",
+        "data": {
+          "query": "公司年会的抽奖规则是什么？中奖率多少？",
+          "expanded_query": "公司年会的抽奖规则是什么？中奖率多少？",
+          "top_score": 2.234,
+          "confident": false,
+          "content_hits": 0,
+          "hits": [
+            {
+              "doc_id": "D01",
+              "title": "差旅报销管理办法",
+              "version": "v1.2",
+              "effective_date": "2025-03-01",
+              "heading": "1 目的与适用范围",
+              "score": 2.234,
+              "text": "为规范公司差旅费用支出、控制费用风险，制定本办法。\n\n本办法适用于公司全体在职员工因公出差产生的交通、住宿、餐饮及杂费报销。"
+            },
+            {
+              "doc_id": "D05",
+              "title": "考勤与请假管理制度",
+              "version": "v1.3",
+              "effective_date": "2025-09-01",
+              "heading": "1 适用范围",
+              "score": 2.074,
+              "text": "本制度适用于公司全体在职员工的考勤、请假与休假管理。"
+            },
+            {
+              "doc_id": "D09",
+              "title": "采购与供应商准入管理办法",
+              "version": "v1.0",
+              "effective_date": "2025-11-01",
+              "heading": "1 适用范围",
+              "score": 1.997,
+              "text": "本办法适用于公司各类物资、服务采购及新增供应商的准入评审。"
+            },
+            {
+              "doc_id": "D01",
+              "title": "差旅报销管理办法",
+              "version": "v1.2",
+              "effective_date": "2025-03-01",
+              "heading": "5 附则",
+              "score": 1.973,
+              "text": "本办法由财务部负责解释。本办法未规定的事项，按公司其他相关制度执行。"
+            },
+            {
+              "doc_id": "D02",
+              "title": "费用报销实施细则",
+              "version": "v2.0",
+              "effective_date": "2026-01-15",
+              "heading": "1 适用范围",
+              "score": 1.881,
+              "text": "本细则适用于总部及各分公司全体在职人员的日常费用与差旅费用报销。"
+            },
+            {
+              "doc_id": "D03",
+              "title": "固定资产与设备借用规定",
+              "version": "v1.1",
+              "effective_date": "2025-07-01",
+              "heading": "1 适用范围",
+              "score": 1.817,
+              "text": "本规定适用于员工因项目拍摄、测试、外派等事由借用公司固定资产（相机、稳定器、采集卡、测试机等）。"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "step": 2,
+      "action": "search_docs",
+      "args": {
+        "query": "公司年会的抽奖规则是什么 中奖率多少",
+        "top_k": 8
+      },
+      "reason": "上一轮检索置信度不足，换关键词再检索一次",
+      "observation": {
+        "ok": true,
+        "summary": "检索「公司年会的抽奖规则是什么 中奖率多少」命中 6 个片段，涉及 D01、D05、D09、D02、D03；最高分 2.23，置信=否",
+        "error": "",
+        "data": {
+          "query": "公司年会的抽奖规则是什么 中奖率多少",
+          "expanded_query": "公司年会的抽奖规则是什么 中奖率多少",
+          "top_score": 2.234,
+          "confident": false,
+          "content_hits": 0,
+          "hits": [
+            {
+              "doc_id": "D01",
+              "title": "差旅报销管理办法",
+              "version": "v1.2",
+              "effective_date": "2025-03-01",
+              "heading": "1 目的与适用范围",
+              "score": 2.234,
+              "text": "为规范公司差旅费用支出、控制费用风险，制定本办法。\n\n本办法适用于公司全体在职员工因公出差产生的交通、住宿、餐饮及杂费报销。"
+            },
+            {
+              "doc_id": "D05",
+              "title": "考勤与请假管理制度",
+              "version": "v1.3",
+              "effective_date": "2025-09-01",
+              "heading": "1 适用范围",
+              "score": 2.074,
+              "text": "本制度适用于公司全体在职员工的考勤、请假与休假管理。"
+            },
+            {
+              "doc_id": "D09",
+              "title": "采购与供应商准入管理办法",
+              "version": "v1.0",
+              "effective_date": "2025-11-01",
+              "heading": "1 适用范围",
+              "score": 1.997,
+              "text": "本办法适用于公司各类物资、服务采购及新增供应商的准入评审。"
+            },
+            {
+              "doc_id": "D01",
+              "title": "差旅报销管理办法",
+              "version": "v1.2",
+              "effective_date": "2025-03-01",
+              "heading": "5 附则",
+              "score": 1.973,
+              "text": "本办法由财务部负责解释。本办法未规定的事项，按公司其他相关制度执行。"
+            },
+            {
+              "doc_id": "D02",
+              "title": "费用报销实施细则",
+              "version": "v2.0",
+              "effective_date": "2026-01-15",
+              "heading": "1 适用范围",
+              "score": 1.881,
+              "text": "本细则适用于总部及各分公司全体在职人员的日常费用与差旅费用报销。"
+            },
+            {
+              "doc_id": "D03",
+              "title": "固定资产与设备借用规定",
+              "version": "v1.1",
+              "effective_date": "2025-07-01",
+              "heading": "1 适用范围",
+              "score": 1.817,
+              "text": "本规定适用于员工因项目拍摄、测试、外派等事由借用公司固定资产（相机、稳定器、采集卡、测试机等）。"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "step": 3,
+      "action": "finish",
+      "args": {
+        "status": "out_of_scope"
+      },
+      "reason": "两轮检索都没有命中任何实质关键词，判断为资料外问题",
+      "observation": {
+        "ok": true,
+        "summary": "终止动作：不调用工具"
+      }
+    }
+  ],
+  "result": {
+    "status": "out_of_scope",
+    "answer": "资料库里没有检索到与该问题相关的制度或产品说明，因此不回答。现有资料覆盖差旅与费用报销、设备借用、考勤请假、加班调休、产品导出、采购准入等主题。",
+    "citations": [],
+    "gaps": [
+      "知识库内无对应文档",
+      "该问题可能属于未入库的业务领域"
+    ],
+    "next_actions": [
+      "确认问题所属业务域，或提供对应制度文档后再问"
+    ],
+    "basis": ""
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}

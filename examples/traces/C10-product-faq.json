@@ -1,0 +1,124 @@
+{
+  "case_id": "C10",
+  "title": "明确答案（产品侧）：FAQ 类问题",
+  "provider": "mock-rule-policy",
+  "question": "云剪单次导出最长可以多长？4K 要什么版本？",
+  "history": [],
+  "budget": {
+    "max_steps": 8,
+    "max_tool_calls": 6,
+    "steps_used": 2,
+    "tool_calls_used": 1
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_docs",
+      "args": {
+        "query": "云剪单次导出最长可以多长？4K 要什么版本？",
+        "top_k": 6
+      },
+      "reason": "先检索资料库，确认是否存在可支撑回答的原文",
+      "observation": {
+        "ok": true,
+        "summary": "检索「云剪单次导出最长可以多长？4K 要什么版本？」命中 6 个片段，涉及 D04、D05、D01、D03、D02；最高分 20.27，置信=是",
+        "error": "",
+        "data": {
+          "query": "云剪单次导出最长可以多长？4K 要什么版本？",
+          "expanded_query": "云剪单次导出最长可以多长？4K 要什么版本？ 渲染 输出 生成",
+          "top_score": 20.268,
+          "confident": true,
+          "content_hits": 4,
+          "hits": [
+            {
+              "doc_id": "D04",
+              "title": "产品「云剪」导出功能说明",
+              "version": "v3.4",
+              "effective_date": "2026-05-20",
+              "heading": "1 导出规格",
+              "score": 20.268,
+              "text": "- 单次导出时长上限：30 分钟\n- 1080P 导出：免费版可用\n- 4K 导出：仅专业版及以上版本可用\n- 导出并发数：同一账号最多 2 个任务同时导出"
+            },
+            {
+              "doc_id": "D04",
+              "title": "产品「云剪」导出功能说明",
+              "version": "v3.4",
+              "effective_date": "2026-05-20",
+              "heading": "2 常见失败原因",
+              "score": 5.716,
+              "text": "- 导出失败自动重试次数：3 次\n- 素材缺失导致的失败：需重新上传素材后再次导出\n- 存储空间不足：清理草稿箱后重试"
+            },
+            {
+              "doc_id": "D05",
+              "title": "考勤与请假管理制度",
+              "version": "v1.3",
+              "effective_date": "2025-09-01",
+              "heading": "4 事假",
+              "score": 5.094,
+              "text": "- 事假最小申请单位：0.5 天\n- 事假期间薪资处理：按日工资标准扣减"
+            },
+            {
+              "doc_id": "D01",
+              "title": "差旅报销管理办法",
+              "version": "v1.2",
+              "effective_date": "2025-03-01",
+              "heading": "4 审批权限",
+              "score": 4.687,
+              "text": "- 单笔报销金额不超过 5000 元的：部门负责人审批\n- 单笔报销金额超过 5000 元的：部门负责人审批后报财务总监审批"
+            },
+            {
+              "doc_id": "D03",
+              "title": "固定资产与设备借用规定",
+              "version": "v1.1",
+              "effective_date": "2025-07-01",
+              "heading": "4 归还要求",
+              "score": 4.63,
+              "text": "- 归还时需当面验机并填写《设备状态确认单》\n- 设备损坏或丢失的：按购置价折旧后赔偿，具体比例由资产管理部核定"
+            },
+            {
+              "doc_id": "D02",
+              "title": "费用报销实施细则",
+              "version": "v2.0",
+              "effective_date": "2026-01-15",
+              "heading": "4 效力关系说明",
+              "score": 4.558,
+              "text": "本细则未就与其他制度条款的效力关系、适用范围差异作出规定，亦未声明本细则替代或废止任何既有制度条款。"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "step": 2,
+      "action": "finish",
+      "args": {
+        "status": "answered"
+      },
+      "reason": "命中单份文档且无取值冲突，可直接引用原文作答",
+      "observation": {
+        "ok": true,
+        "summary": "终止动作：不调用工具"
+      }
+    }
+  ],
+  "result": {
+    "status": "answered",
+    "answer": "依据《产品「云剪」导出功能说明》（D04，v3.4，2026-05-20 生效）：\n- 单次导出时长上限：30 分钟\n- 1080P 导出：免费版可用\n- 4K 导出：仅专业版及以上版本可用\n- 导出并发数：同一账号最多 2 个任务同时导出",
+    "citations": [
+      {
+        "doc_id": "D04",
+        "version": "v3.4",
+        "quote": "- 单次导出时长上限：30 分钟\n- 1080P 导出：免费版可用\n- 4K 导出：仅专业版及以上版本可用\n- 导出并发数：同一账号最多 2 个任务同时导出"
+      }
+    ],
+    "gaps": [
+      "本条仅适用于「产品 FAQ（对外）」，若提问者不属于该范围需另行确认"
+    ],
+    "next_actions": [],
+    "basis": ""
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}

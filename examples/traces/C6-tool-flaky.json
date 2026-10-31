@@ -1,0 +1,161 @@
+{
+  "case_id": "C6",
+  "title": "工具失败（可恢复）：检索超时后改写查询重试",
+  "provider": "mock-rule-policy",
+  "question": "病假证明材料要几天内提交？",
+  "history": [],
+  "budget": {
+    "max_steps": 8,
+    "max_tool_calls": 6,
+    "steps_used": 3,
+    "tool_calls_used": 2
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_docs",
+      "args": {
+        "query": "病假证明材料要几天内提交？",
+        "top_k": 6
+      },
+      "reason": "先检索资料库，确认是否存在可支撑回答的原文",
+      "observation": {
+        "ok": false,
+        "summary": "检索服务超时：上游 3000ms 未返回",
+        "error": "TIMEOUT",
+        "data": {
+          "tool": "search_docs",
+          "attempt": 1,
+          "injected_fault": true
+        }
+      }
+    },
+    {
+      "step": 2,
+      "action": "search_docs",
+      "args": {
+        "query": "病假证明材料要期限内提交",
+        "top_k": 8
+      },
+      "reason": "上次检索因超时失败，改写查询后重试一次（不重发同一请求）",
+      "observation": {
+        "ok": true,
+        "summary": "检索「病假证明材料要期限内提交」命中 8 个片段，涉及 D05、D03、D02、D01、D07、D08；最高分 31.05，置信=是",
+        "error": "",
+        "data": {
+          "query": "病假证明材料要期限内提交",
+          "expanded_query": "病假证明材料要期限内提交 时限 多久 几天 日内 天数 多长时间 拖 病休",
+          "top_score": 31.049,
+          "confident": true,
+          "content_hits": 8,
+          "hits": [
+            {
+              "doc_id": "D05",
+              "title": "考勤与请假管理制度",
+              "version": "v1.3",
+              "effective_date": "2025-09-01",
+              "heading": "3 病假",
+              "score": 31.049,
+              "text": "- 病假证明材料提交时限：返岗后 3 个工作日内\n- 连续病假超过 5 个工作日的：需提供二级及以上医院证明"
+            },
+            {
+              "doc_id": "D03",
+              "title": "固定资产与设备借用规定",
+              "version": "v1.1",
+              "effective_date": "2025-07-01",
+              "heading": "2 借用期限",
+              "score": 9.656,
+              "text": "- 单次借用期限：7 个工作日\n- 续借次数上限：1 次\n- 续借延长时长：最多 5 个工作日\n- 续借申请时点：到期前 1 个工作日在资产系统提交"
+            },
+            {
+              "doc_id": "D02",
+              "title": "费用报销实施细则",
+              "version": "v2.0",
+              "effective_date": "2026-01-15",
+              "heading": "2 报销时限",
+              "score": 7.184,
+              "text": "- 差旅费用报销期限：15 天\n- 起算时点：出差行程结束之日\n- 单据要求：发票原件、行程单、审批通过的出差申请单"
+            },
+            {
+              "doc_id": "D01",
+              "title": "差旅报销管理办法",
+              "version": "v1.2",
+              "effective_date": "2025-03-01",
+              "heading": "3.1 报销期限",
+              "score": 6.958,
+              "text": "- 差旅费用报销期限：30 天\n- 起算时点：出差行程结束之日\n- 提交方式：OA 系统「费用报销」单据，附行程单与发票"
+            },
+            {
+              "doc_id": "D01",
+              "title": "差旅报销管理办法",
+              "version": "v1.2",
+              "effective_date": "2025-03-01",
+              "heading": "3 报销时限与流程",
+              "score": 6.451,
+              "text": ""
+            },
+            {
+              "doc_id": "D07",
+              "title": "加班与调休管理规定",
+              "version": "v1.0",
+              "effective_date": "2025-01-01",
+              "heading": "2 调休",
+              "score": 6.412,
+              "text": "- 调休使用期限：90 天\n- 起算时点：加班发生之日\n- 调休申请方式：OA 系统提交，由直属主管审批\n- 未在期限内使用的调休：自动失效，不予折现"
+            },
+            {
+              "doc_id": "D08",
+              "title": "加班与调休管理规定（2026 年修订）",
+              "version": "v2.0",
+              "effective_date": "2026-06-01",
+              "heading": "2 调休",
+              "score": 6.412,
+              "text": "- 调休使用期限：60 天\n- 起算时点：加班发生之日\n- 调休申请方式：OA 系统提交，由直属主管审批\n- 未在期限内使用的调休：自动失效，不予折现"
+            },
+            {
+              "doc_id": "D05",
+              "title": "考勤与请假管理制度",
+              "version": "v1.3",
+              "effective_date": "2025-09-01",
+              "heading": "2 年假",
+              "score": 4.776,
+              "text": "- 累计工作满 1 年不满 10 年的年假天数：5 天\n- 累计工作满 10 年不满 20 年的年假天数：10 天\n- 累计工作满 20 年及以上的年假天数：15 天\n- 年假申请提前量：原则上提前 3 个工作日"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "step": 3,
+      "action": "finish",
+      "args": {
+        "status": "answered"
+      },
+      "reason": "命中单份文档且无取值冲突，可直接引用原文作答",
+      "observation": {
+        "ok": true,
+        "summary": "终止动作：不调用工具"
+      }
+    }
+  ],
+  "result": {
+    "status": "answered",
+    "answer": "依据《考勤与请假管理制度》（D05，v1.3，2025-09-01 生效）：\n- 病假证明材料提交时限：返岗后 3 个工作日内\n- 连续病假超过 5 个工作日的：需提供二级及以上医院证明",
+    "citations": [
+      {
+        "doc_id": "D05",
+        "version": "v1.3",
+        "quote": "- 病假证明材料提交时限：返岗后 3 个工作日内\n- 连续病假超过 5 个工作日的：需提供二级及以上医院证明"
+      }
+    ],
+    "gaps": [
+      "本条仅适用于「全体在职员工」，若提问者不属于该范围需另行确认"
+    ],
+    "next_actions": [],
+    "basis": ""
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}

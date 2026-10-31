@@ -1,0 +1,27 @@
+{
+  "case_id": "C9",
+  "title": "预算耗尽：步数上限触发的明确未完成状态",
+  "question": "采购金额 5 万元需要谁审批？",
+  "status": "unfinished",
+  "answer": "任务未完成：达到步数上限 1（已用 1 步 / 1 次工具调用，已检索到 D09、D01、D05、D02）。为避免在证据不完整时给出结论，这里不输出答案。",
+  "citations": [],
+  "gaps": [
+    "达到步数上限 1",
+    "证据链尚未闭合"
+  ],
+  "next_actions": [
+    "提高上限后重试",
+    "或缩小问题范围"
+  ],
+  "basis": "",
+  "budget": {
+    "max_steps": 1,
+    "max_tool_calls": 6,
+    "steps_used": 1,
+    "tool_calls_used": 1
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}

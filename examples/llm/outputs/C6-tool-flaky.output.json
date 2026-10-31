@@ -1,0 +1,27 @@
+{
+  "case_id": "C6",
+  "title": "工具失败（可恢复）：检索超时后改写查询重试",
+  "question": "病假证明材料要几天内提交？",
+  "status": "answered",
+  "answer": "病假证明材料需在返岗后3个工作日内提交。",
+  "citations": [
+    {
+      "doc_id": "D05",
+      "version": "v1.3",
+      "quote": "病假证明材料提交时限：返岗后 3 个工作日内"
+    }
+  ],
+  "gaps": [],
+  "next_actions": [],
+  "basis": "D05 v1.3 生效2025-09-01 的条款明确规定了病假证明材料的提交时限。",
+  "budget": {
+    "max_steps": 8,
+    "max_tool_calls": 6,
+    "steps_used": 3,
+    "tool_calls_used": 2
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}

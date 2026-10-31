@@ -1,0 +1,151 @@
+{
+  "case_id": "C6",
+  "title": "工具失败（可恢复）：检索超时后改写查询重试",
+  "provider": "llm:deepseek-ai/DeepSeek-V3",
+  "question": "病假证明材料要几天内提交？",
+  "history": [],
+  "budget": {
+    "max_steps": 8,
+    "max_tool_calls": 6,
+    "steps_used": 3,
+    "tool_calls_used": 2
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_docs",
+      "args": {
+        "query": "病假 证明 提交 天数",
+        "top_k": 6
+      },
+      "reason": "检索病假证明材料提交时限的相关规定",
+      "observation": {
+        "ok": false,
+        "summary": "检索服务超时：上游 3000ms 未返回",
+        "error": "TIMEOUT",
+        "data": {
+          "tool": "search_docs",
+          "attempt": 1,
+          "injected_fault": true
+        }
+      }
+    },
+    {
+      "step": 2,
+      "action": "search_docs",
+      "args": {
+        "query": "病假 证明 材料 提交 天数",
+        "top_k": 6
+      },
+      "reason": "检索与病假证明材料提交时间相关的文档片段",
+      "observation": {
+        "ok": true,
+        "summary": "检索「病假 证明 材料 提交 天数」命中 6 个片段，涉及 D05、D01、D03、D07、D08；最高分 18.99，置信=是",
+        "error": "",
+        "data": {
+          "query": "病假 证明 材料 提交 天数",
+          "expanded_query": "病假 证明 材料 提交 天数 期限 病休",
+          "top_score": 18.991,
+          "confident": true,
+          "content_hits": 5,
+          "hits": [
+            {
+              "doc_id": "D05",
+              "title": "考勤与请假管理制度",
+              "version": "v1.3",
+              "effective_date": "2025-09-01",
+              "heading": "3 病假",
+              "score": 18.991,
+              "text": "- 病假证明材料提交时限：返岗后 3 个工作日内\n- 连续病假超过 5 个工作日的：需提供二级及以上医院证明"
+            },
+            {
+              "doc_id": "D01",
+              "title": "差旅报销管理办法",
+              "version": "v1.2",
+              "effective_date": "2025-03-01",
+              "heading": "3.1 报销期限",
+              "score": 6.958,
+              "text": "- 差旅费用报销期限：30 天\n- 起算时点：出差行程结束之日\n- 提交方式：OA 系统「费用报销」单据，附行程单与发票"
+            },
+            {
+              "doc_id": "D03",
+              "title": "固定资产与设备借用规定",
+              "version": "v1.1",
+              "effective_date": "2025-07-01",
+              "heading": "2 借用期限",
+              "score": 6.653,
+              "text": "- 单次借用期限：7 个工作日\n- 续借次数上限：1 次\n- 续借延长时长：最多 5 个工作日\n- 续借申请时点：到期前 1 个工作日在资产系统提交"
+            },
+            {
+              "doc_id": "D05",
+              "title": "考勤与请假管理制度",
+              "version": "v1.3",
+              "effective_date": "2025-09-01",
+              "heading": "2 年假",
+              "score": 4.776,
+              "text": "- 累计工作满 1 年不满 10 年的年假天数：5 天\n- 累计工作满 10 年不满 20 年的年假天数：10 天\n- 累计工作满 20 年及以上的年假天数：15 天\n- 年假申请提前量：原则上提前 3 个工作日"
+            },
+            {
+              "doc_id": "D07",
+              "title": "加班与调休管理规定",
+              "version": "v1.0",
+              "effective_date": "2025-01-01",
+              "heading": "2 调休",
+              "score": 3.867,
+              "text": "- 调休使用期限：90 天\n- 起算时点：加班发生之日\n- 调休申请方式：OA 系统提交，由直属主管审批\n- 未在期限内使用的调休：自动失效，不予折现"
+            },
+            {
+              "doc_id": "D08",
+              "title": "加班与调休管理规定（2026 年修订）",
+              "version": "v2.0",
+              "effective_date": "2026-06-01",
+              "heading": "2 调休",
+              "score": 3.867,
+              "text": "- 调休使用期限：60 天\n- 起算时点：加班发生之日\n- 调休申请方式：OA 系统提交，由直属主管审批\n- 未在期限内使用的调休：自动失效，不予折现"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "step": 3,
+      "action": "finish",
+      "args": {
+        "status": "answered",
+        "answer": "病假证明材料需在返岗后3个工作日内提交。",
+        "citations": [
+          {
+            "doc_id": "D05",
+            "quote": "病假证明材料提交时限：返岗后 3 个工作日内"
+          }
+        ],
+        "gaps": [],
+        "next_actions": [],
+        "basis": "D05 v1.3 生效2025-09-01 的条款明确规定了病假证明材料的提交时限。"
+      },
+      "reason": "",
+      "observation": {
+        "ok": true,
+        "summary": "终止动作：不调用工具"
+      }
+    }
+  ],
+  "result": {
+    "status": "answered",
+    "answer": "病假证明材料需在返岗后3个工作日内提交。",
+    "citations": [
+      {
+        "doc_id": "D05",
+        "version": "v1.3",
+        "quote": "病假证明材料提交时限：返岗后 3 个工作日内"
+      }
+    ],
+    "gaps": [],
+    "next_actions": [],
+    "basis": "D05 v1.3 生效2025-09-01 的条款明确规定了病假证明材料的提交时限。"
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}

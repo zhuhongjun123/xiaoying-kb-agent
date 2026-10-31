@@ -1,0 +1,26 @@
+{
+  "case_id": "C3",
+  "title": "资料外问题：库内无相关制度",
+  "question": "公司年会的抽奖规则是什么？中奖率多少？",
+  "status": "out_of_scope",
+  "answer": "资料库里没有检索到与该问题相关的制度或产品说明，因此不回答。现有资料覆盖差旅与费用报销、设备借用、考勤请假、加班调休、产品导出、采购准入等主题。",
+  "citations": [],
+  "gaps": [
+    "知识库内无对应文档",
+    "该问题可能属于未入库的业务领域"
+  ],
+  "next_actions": [
+    "确认问题所属业务域，或提供对应制度文档后再问"
+  ],
+  "basis": "",
+  "budget": {
+    "max_steps": 8,
+    "max_tool_calls": 6,
+    "steps_used": 3,
+    "tool_calls_used": 2
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}

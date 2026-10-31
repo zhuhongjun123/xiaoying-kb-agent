@@ -1,0 +1,120 @@
+{
+  "case_id": "C3",
+  "title": "资料外问题：库内无相关制度",
+  "provider": "llm:deepseek-ai/DeepSeek-V3",
+  "question": "公司年会的抽奖规则是什么？中奖率多少？",
+  "history": [],
+  "budget": {
+    "max_steps": 8,
+    "max_tool_calls": 6,
+    "steps_used": 4,
+    "tool_calls_used": 3
+  },
+  "steps": [
+    {
+      "step": 1,
+      "action": "search_docs",
+      "args": {
+        "query": "年会 抽奖规则 中奖率",
+        "top_k": 6
+      },
+      "reason": "检索与公司年会抽奖规则和中奖率相关的文档片段",
+      "observation": {
+        "ok": true,
+        "summary": "检索「年会 抽奖规则 中奖率」无命中片段",
+        "error": "",
+        "data": {
+          "query": "年会 抽奖规则 中奖率",
+          "expanded_query": "年会 抽奖规则 中奖率",
+          "top_score": 0.0,
+          "confident": false,
+          "content_hits": 0,
+          "hits": []
+        }
+      }
+    },
+    {
+      "step": 2,
+      "action": "search_docs",
+      "args": {
+        "query": "年会 抽奖",
+        "top_k": 6
+      },
+      "reason": "扩大检索范围，尝试获取与年会抽奖相关的信息",
+      "observation": {
+        "ok": true,
+        "summary": "检索「年会 抽奖」无命中片段",
+        "error": "",
+        "data": {
+          "query": "年会 抽奖",
+          "expanded_query": "年会 抽奖",
+          "top_score": 0.0,
+          "confident": false,
+          "content_hits": 0,
+          "hits": []
+        }
+      }
+    },
+    {
+      "step": 3,
+      "action": "search_docs",
+      "args": {
+        "query": "抽奖规则 中奖率",
+        "top_k": 6
+      },
+      "reason": "尝试更通用的关键词组合检索抽奖相关信息",
+      "observation": {
+        "ok": true,
+        "summary": "检索「抽奖规则 中奖率」无命中片段",
+        "error": "",
+        "data": {
+          "query": "抽奖规则 中奖率",
+          "expanded_query": "抽奖规则 中奖率",
+          "top_score": 0.0,
+          "confident": false,
+          "content_hits": 0,
+          "hits": []
+        }
+      }
+    },
+    {
+      "step": 4,
+      "action": "finish",
+      "args": {
+        "status": "out_of_scope",
+        "answer": "未找到与公司年会抽奖规则及中奖率相关的文档",
+        "citations": [],
+        "gaps": [
+          "年会抽奖规则",
+          "中奖率"
+        ],
+        "next_actions": [
+          "请相关部门提供最新年会抽奖规则文档"
+        ],
+        "basis": "经过多轮检索均未找到相关文档"
+      },
+      "reason": "检索无结果且置信度低，判定问题超出当前知识库范围",
+      "observation": {
+        "ok": true,
+        "summary": "终止动作：不调用工具"
+      }
+    }
+  ],
+  "result": {
+    "status": "out_of_scope",
+    "answer": "未找到与公司年会抽奖规则及中奖率相关的文档",
+    "citations": [],
+    "gaps": [
+      "年会抽奖规则",
+      "中奖率"
+    ],
+    "next_actions": [
+      "请相关部门提供最新年会抽奖规则文档"
+    ],
+    "basis": "经过多轮检索均未找到相关文档"
+  },
+  "citation_check": {
+    "ok": true,
+    "problems": []
+  }
+}
